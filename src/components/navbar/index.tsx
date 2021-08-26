@@ -45,7 +45,7 @@ export function Menu() {
         className={styles.navbarComponent}
       >
         <Text>
-          <ActiveLink href="/recipes" activeClassName={styles.active}>
+          <ActiveLink href="/recipes/" activeClassName={styles.active}>
             <a href="/recipes/">Browse</a>
           </ActiveLink>
         </Text>

@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorModeScript, ChakraProvider, CSSReset } from "@chakra-ui/react";
+import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 
 import theme from "../../styles/theme";
 
