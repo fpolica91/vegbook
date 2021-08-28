@@ -51,7 +51,7 @@ export function Menu() {
         </Text>
         <Text>
           <Link href="/trending/" activeClassName={styles.active}>
-            <a href="/recipes/">Trending </a>
+            <a href="/trending/">Trending </a>
           </Link>
         </Text>
         <Text>

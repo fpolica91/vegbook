@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { Menu } from "../components/navbar";
-import { Container, Flex, Box, Heading } from "@chakra-ui/react";
+import { Flex, Stack, Divider, Heading, Box } from "@chakra-ui/react";
+import { Preview } from "../components/Preview";
+import { Hero } from "../components/Hero";
 
 export default function Home() {
   return (
@@ -8,34 +10,39 @@ export default function Home() {
       <Head>
         <title>VegBook | Home</title>
       </Head>
-
       <Menu />
-      <Flex
-        as="main"
-        backgroundImage="url('/hero.jpg')"
-        bgRepeat="no-repeat"
-        backgroundSize="cover"
-        bgPosition="center"
-        alignItems="center"
-        height="100vh"
-        justifyContent="center"
-      >
-        <Flex
-          direction="column"
-          alignItems="center"
+      <Hero />
+      <Divider orientation="horizontal" />
+
+      <Flex as="article" justifyContent="center" flexDir="column" mt={12}>
+        <Box display="flex" mb={8} mt={10} justifyContent="center">
+          <Heading fontWeight="normal">Latest</Heading>
+        </Box>
+        <Stack
+          direction={["column", "row"]}
+          spacing={8}
           justifyContent="center"
-          ml="auto"
-          pr={{ lg: "2rem", sm: "0" }}
         >
-          <Box maxWidth="400">
-            <Heading
-              color="#000000"
-              fontSize={{ base: "75px", md: "65px", sm: "55", lg: "75px" }}
-            >
-              Simple and Tasty Recipes
-            </Heading>
-          </Box>
-        </Flex>
+          <Preview
+            title="fruit"
+            description="Simple Juice Recipes to boost your immune system"
+            imageUrl="/oranje_thee.jpg"
+            readTime="5 mins read"
+          />
+
+          <Preview
+            title="fruit"
+            description="Simple Juice Recipes to boost your immune system"
+            imageUrl="/papaja.jpg"
+            readTime="5 mins read"
+          />
+          <Preview
+            title="fruit"
+            description="Simple Juice Recipes to boost your immune system"
+            imageUrl="/wortels.jpg"
+            readTime="5 mins read"
+          />
+        </Stack>
       </Flex>
     </>
   );
