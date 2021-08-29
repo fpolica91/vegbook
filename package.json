@@ -12,12 +12,16 @@
     "@chakra-ui/react": "^1.6.6",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11",
+    "@prismicio/client": "^5.1.0",
     "framer-motion": "^4",
     "next": "11.1.0",
+    "prismic-cli": "^4.1.1",
+    "prismic-dom": "^2.2.6",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@types/prismic-dom": "^2.1.1",
     "@types/react": "17.0.19",
     "sass": "^1.38.1",
     "typescript": "4.3.5"

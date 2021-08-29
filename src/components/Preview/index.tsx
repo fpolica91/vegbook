@@ -5,6 +5,7 @@ interface PreviewProps {
   readTime: string;
   imageUrl: string;
   description: string;
+  alt: string;
 }
 
 export function Preview({
@@ -12,11 +13,12 @@ export function Preview({
   readTime,
   imageUrl,
   description,
+  alt,
   ...rest
 }: PreviewProps) {
   return (
     <Box maxW="xlg" borderWidth="1px" overflow="hidden">
-      <Image src={imageUrl} w={["100vw", 360, 360]} />
+      <Image src={imageUrl} w={["100vw", 360, 360]} alt={alt} />
       <Box d="flex" alignItems="baseline" mt={4}>
         <Badge px="2" variant="ghost" color="#F5556E">
           {title}
@@ -38,6 +40,9 @@ export function Preview({
         lineHeight="30px"
         textAlign="left"
         margin="0.5rem 0"
+        background="linear-gradient(#FFFFFF, transparent)"
+        backgroundClip="text"
+        webkitTextFillColor="transparent"
       >
         <Text noOfLines={2} d="block" ml="2">
           {description}
