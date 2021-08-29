@@ -53,26 +53,6 @@ export default function Home({ previews }: HomeProps) {
                 alt={preview.image.alt || "alt is missing"}
               />
             ))}
-
-          {/* <Preview
-            title="fruit"
-            description="Simple Juice Recipes to boost your immune system"
-            imageUrl="/oranje_thee.jpg"
-            readTime="5 mins read"
-          />
-
-          <Preview
-            title="fruit"
-            description="Simple Juice Recipes to boost your immune system"
-            imageUrl="/papaja.jpg"
-            readTime="5 mins read"
-          />
-          <Preview
-            title="fruit"
-            description="Simple Juice Recipes to boost your immune system"
-            imageUrl="/wortels.jpg"
-            readTime="5 mins read"
-          /> */}
         </Stack>
       </Flex>
     </>
@@ -108,10 +88,10 @@ export const getStaticProps: GetStaticProps = async () => {
     // image: RichText.asText(result.data.recipe_banner),
   }));
 
-  console.log(previews, "primsic response");
   return {
     props: {
       previews,
     },
+    revalidate: 60 * 60 * 60,
   };
 };
