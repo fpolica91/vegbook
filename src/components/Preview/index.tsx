@@ -1,7 +1,9 @@
 import { Box, Image, Badge, Text } from "@chakra-ui/react";
+import Link from "next/link";
 
 interface PreviewProps {
   title: string;
+  slug: string;
   readTime: string;
   imageUrl: string;
   description: string;
@@ -13,6 +15,7 @@ export function Preview({
   readTime,
   imageUrl,
   description,
+  slug,
   alt,
   ...rest
 }: PreviewProps) {

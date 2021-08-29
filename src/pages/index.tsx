@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { GetStaticProps } from "next";
 import Prismic from "@prismicio/client";
 import { RichText } from "prismic-dom";
@@ -7,6 +8,7 @@ import { Flex, Stack, Divider, Heading, Box } from "@chakra-ui/react";
 import { Preview } from "../components/Preview";
 import { Hero } from "../components/Hero";
 import { getPrismicClient } from "../services/prismic";
+import styles from "../common/styles/home.module.scss";
 
 interface PreviewProps {
   slug: string;
@@ -45,13 +47,19 @@ export default function Home({ previews }: HomeProps) {
         >
           {previews &&
             previews.map((preview) => (
-              <Preview
-                title={preview.title}
-                description={preview.excerpt}
-                imageUrl={preview.image?.url}
-                readTime="5 mins read"
-                alt={preview.image.alt || "alt is missing"}
-              />
+              <Link href={`/recipes/${preview.slug}`}>
+                <a href="" className={styles.previewLink}>
+                  <Preview
+                    key={preview.slug}
+                    slug={preview.slug}
+                    title={preview.title}
+                    description={preview.excerpt}
+                    imageUrl={preview.image?.url}
+                    readTime="5 mins read"
+                    alt={preview.image.alt || "alt is missing"}
+                  />
+                </a>
+              </Link>
             ))}
         </Stack>
       </Flex>
@@ -92,6 +100,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       previews,
     },
-    revalidate: 60 * 60 * 60,
+    revalidate: 60 * 60 * 30,
   };
 };
