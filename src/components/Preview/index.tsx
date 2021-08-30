@@ -43,9 +43,9 @@ export function Preview({
         lineHeight="30px"
         textAlign="left"
         margin="0.5rem 0"
-        background="linear-gradient(#FFFFFF, transparent)"
-        backgroundClip="text"
-        webkitTextFillColor="transparent"
+        // background="linear-gradient(#FFFFFF, transparent)"
+        // backgroundClip="text"
+        // webkitTextFillColor="transparent"
       >
         <Text noOfLines={2} d="block" ml="2">
           {description}

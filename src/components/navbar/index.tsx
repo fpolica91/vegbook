@@ -24,7 +24,6 @@ export function Menu() {
       align="center"
       justify="space-between"
       wrap="wrap"
-      color="white"
       padding={6}
     >
       <Flex>

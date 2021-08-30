@@ -46,7 +46,7 @@ export default function Recipe({ recipe }: RecipeProps) {
         m="0 auto"
         maxW="1500px"
       >
-        <Heading textTransform="capitalize" fontSize="5xl">
+        <Heading textTransform="capitalize" fontSize="5xl" pt={5}>
           {singleRecipe.title}
         </Heading>
         <Box mt={20}>
