@@ -2,7 +2,17 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { RichText } from "prismic-dom";
 import { useState } from "react";
-import { Flex, Heading, Box, Image, Text, Container } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Box,
+  Image,
+  Text,
+  Container,
+  Divider,
+} from "@chakra-ui/react";
+
+import { BellIcon } from "@chakra-ui/icons";
 import { getPrismicClient } from "../../services/prismic";
 import styles from "./recipes.module.scss";
 
@@ -53,6 +63,14 @@ export default function Recipe({ recipe }: RecipeProps) {
             <Text>{singleRecipe.excerpt}</Text>
           </Box>
         </Container>
+        <Divider orientation="horizontal" mt={2} />
+        <Container maxW="container.lg" d="flex" justifyContent="center">
+          <Heading fontSize="md">
+            <BellIcon w={6} h={6} mr={4} verticalAlign="bottom" />
+            12 People Are Cooking This
+          </Heading>
+        </Container>
+        <Divider orientation="horizontal" mb={8} />
         <Flex as="main">
           <Container
             className={styles.ingredients}
@@ -60,6 +78,7 @@ export default function Recipe({ recipe }: RecipeProps) {
           />
 
           <Container
+            className={styles.cookingDirections}
             dangerouslySetInnerHTML={{
               __html: singleRecipe.cooking_instructions,
             }}
