@@ -71,8 +71,9 @@ export default function Recipe({ recipe }: RecipeProps) {
           </Heading>
         </Container>
         <Divider orientation="horizontal" mb={8} />
-        <Flex as="main">
+        <Flex as="main" direction={["column", "row"]}>
           <Container
+            justifyContent="flex-start"
             className={styles.ingredients}
             dangerouslySetInnerHTML={{ __html: singleRecipe.ingredients }}
           />
