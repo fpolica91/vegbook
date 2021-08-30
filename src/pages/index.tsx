@@ -47,8 +47,11 @@ export default function Home({ previews }: HomeProps) {
         >
           {previews &&
             previews.map((preview) => (
-              <Link href={`/recipes/${preview.slug}`}>
-                <a href="" className={styles.previewLink}>
+              <Link href={`/recipes/${preview.slug}/`}>
+                <a
+                  href={`/recipes/${preview.slug}/`}
+                  className={styles.previewLink}
+                >
                   <Preview
                     key={preview.slug}
                     slug={preview.slug}
