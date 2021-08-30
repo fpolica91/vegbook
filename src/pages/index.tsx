@@ -73,6 +73,7 @@ export const getStaticProps: GetStaticProps = async () => {
     [Prismic.Predicates.at("document.type", "recipe")],
     {
       pageSize: 3,
+      orderings: "[document.first_publication_date, desc]",
     }
   );
 
