@@ -20,7 +20,7 @@ export function Preview({
   ...rest
 }: PreviewProps) {
   return (
-    <Box maxW="xlg" borderWidth="1px" overflow="hidden">
+    <Box maxW="xlg" overflow="hidden" boxShadow="sm" minH="450px">
       <Image src={imageUrl} w={["100vw", 360, 360]} alt={alt} />
       <Box d="flex" alignItems="baseline" mt={4}>
         <Badge px="2" variant="ghost" color="#F5556E">

@@ -3,11 +3,14 @@
   margin-top: 1rem;
 
   ol {
+    list-style: circle;
     line-height: 2rem;
     min-width: 300px;
     li {
-      display: flex;
-
+      // display: flex;
+      strong {
+        display: block;
+      }
       & + li {
         margin-top: 0.5rem;
       }
@@ -31,12 +34,14 @@
     display: block;
     margin-bottom: 1rem;
   }
-  li {
-    text-align: left;
-    list-style: circle;
-    display: flex;
-    & + li {
-      margin-top: 1rem;
+  ol {
+    li {
+      text-align: left;
+      list-style: circle;
+      // display: flex;
+      & + li {
+        margin-top: 1rem;
+      }
     }
   }
 }

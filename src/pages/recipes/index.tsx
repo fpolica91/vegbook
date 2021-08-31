@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu } from "../../components/navbar";
 import styles from "./recipes.module.scss";
-import { Flex, Stack, Box, Image } from "@chakra-ui/react";
+import { Flex, Stack, Box, Image, Text, Button } from "@chakra-ui/react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import { RichText } from "prismic-dom";
@@ -29,12 +29,41 @@ interface HomeProps {
 }
 
 export default function Recipes({ recipes, next_page }: HomeProps) {
+  const [nextPage, setNextPage] = useState<string>(next_page);
   const [featuredRecipes, setRecipes] = useState<Recipe[]>(recipes);
+
+  const loadMore = async () => {
+    const response = await fetch(nextPage);
+    const data = await response.json();
+    const recipes = data.results.map((result: any) => ({
+      slug: result.uid,
+      release_date: new Date(result.data.release_date).toLocaleDateString(
+        "en-US",
+        {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        }
+      ),
+      title: RichText.asText(result.data.recipe_title),
+      excerpt: result.data.catch_phrase,
+      author: result.data.author,
+      image: {
+        url: result.data.recipe_banner.url,
+        alt: result.data.recipe_banner.alt,
+      },
+      serving_size: RichText.asHtml(result.data.serving_size),
+      cooking_instructions: RichText.asHtml(result.data.cooking_instructions),
+      ingredients: RichText.asHtml(result.data.ingredients),
+    }));
+    setRecipes([...featuredRecipes, ...recipes]);
+    setNextPage(data.next_page);
+  };
   return (
     <>
       <Head>Vegbook | Home</Head>
       <Menu />
-      <Flex justifyContent="center" margin="2rem 0">
+      <Flex flexDir="column" alignItems="center" margin="2rem 0">
         <Stack>
           {featuredRecipes.map((recipe) => (
             <Box d="flex" boxShadow="md" width="3xl" maxW="1200px">
@@ -54,6 +83,13 @@ export default function Recipes({ recipes, next_page }: HomeProps) {
             </Box>
           ))}
         </Stack>
+        {nextPage && (
+          <Box as="div" my={8}>
+            <Text color="pink.400" as="button" onClick={loadMore}>
+              load more
+            </Text>
+          </Box>
+        )}
       </Flex>
     </>
   );
@@ -89,11 +125,11 @@ export const getStaticProps: GetStaticProps = async () => {
     cooking_instructions: RichText.asHtml(result.data.cooking_instructions),
     ingredients: RichText.asHtml(result.data.ingredients),
   }));
-  console.log(recipes);
+  console.log(response.next_page);
   return {
     props: {
       recipes,
-      nextPage: response.next_page,
+      next_page: response.next_page,
     },
     revalidate: 60 * 60 * 30,
   };
