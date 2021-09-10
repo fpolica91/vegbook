@@ -15,6 +15,7 @@ import {
 import { BellIcon } from "@chakra-ui/icons";
 import { getPrismicClient } from "../../services/prismic";
 import styles from "./recipes.module.scss";
+import { Menu } from "../../components/navbar";
 
 interface Recipe {
   slug: string;
@@ -39,6 +40,8 @@ export default function Recipe({ recipe }: RecipeProps) {
   return (
     <>
       <Head>Vegbook | {singleRecipe.title}</Head>
+      <Menu />
+      <Divider orientation="horizontal" />
       <Flex
         justifyContent="center"
         flexDir="column"

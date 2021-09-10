@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu } from "../../components/navbar";
 import styles from "./recipes.module.scss";
-import { Flex, Stack, Box, Image, Text, Button } from "@chakra-ui/react";
+import { Flex, Stack, Box, Image, Text, Divider } from "@chakra-ui/react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import { RichText } from "prismic-dom";
@@ -63,6 +63,7 @@ export default function Recipes({ recipes, next_page }: HomeProps) {
     <>
       <Head>Vegbook | Home</Head>
       <Menu />
+      <Divider orientation="horizontal" />
       <Flex flexDir="column" alignItems="center" margin="2rem 0">
         <Stack>
           {featuredRecipes.map((recipe) => (
