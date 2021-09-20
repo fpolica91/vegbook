@@ -4,7 +4,14 @@ import { GetStaticProps } from "next";
 import Prismic from "@prismicio/client";
 import { RichText } from "prismic-dom";
 import { Menu } from "../components/navbar";
-import { Flex, Stack, Divider, Heading, Box } from "@chakra-ui/react";
+import {
+  Flex,
+  Stack,
+  Divider,
+  Heading,
+  Box,
+  SimpleGrid,
+} from "@chakra-ui/react";
 import { Preview } from "../components/Preview";
 import { Hero } from "../components/Hero";
 import { getPrismicClient } from "../services/prismic";
@@ -40,30 +47,28 @@ export default function Home({ previews }: HomeProps) {
         <Box display="flex" mb={8} mt={10} justifyContent="center">
           <Heading fontWeight="normal">Latest</Heading>
         </Box>
-        <Stack
-          direction={["column", "row"]}
-          spacing={8}
-          justifyContent="center"
-        >
-          {previews &&
-            previews.map((preview) => (
-              <Link href={`/recipes/${preview.slug}/`} key={preview.slug}>
-                <a
-                  href={`/recipes/${preview.slug}/`}
-                  className={styles.previewLink}
-                >
-                  <Preview
-                    slug={preview.slug}
-                    title={preview.title}
-                    description={preview.excerpt}
-                    imageUrl={preview.image?.url}
-                    readTime="5 mins read"
-                    alt={preview.image.alt || "alt is missing"}
-                  />
-                </a>
-              </Link>
-            ))}
-        </Stack>
+        <Flex maxW={1480} w="100%" my="6" mx="auto" px="6" flexDir="column">
+          <SimpleGrid gap="0" minChildWidth={360}>
+            {previews &&
+              previews.map((preview) => (
+                <Link href={`/recipes/${preview.slug}/`} key={preview.slug}>
+                  <a
+                    href={`/recipes/${preview.slug}/`}
+                    className={styles.previewLink}
+                  >
+                    <Preview
+                      slug={preview.slug}
+                      title={preview.title}
+                      description={preview.excerpt}
+                      imageUrl={preview.image?.url}
+                      readTime="5 mins read"
+                      alt={preview.image.alt || "alt is missing"}
+                    />
+                  </a>
+                </Link>
+              ))}
+          </SimpleGrid>
+        </Flex>
       </Flex>
     </>
   );
