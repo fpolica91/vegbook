@@ -15,13 +15,15 @@
     "@netlify/plugin-nextjs": "^3.9.0",
     "@prismicio/client": "^5.1.0",
     "@sentry/nextjs": "^6.13.2",
+    "@types/webpack": "^5.28.0",
     "framer-motion": "^4",
     "next": "11.1.0",
     "prismic-cli": "^4.1.1",
     "prismic-dom": "^2.2.6",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "styled-components": "^5.3.1"
+    "styled-components": "^5.3.1",
+    "webpack": "^5.54.0"
   },
   "devDependencies": {
     "@types/prismic-dom": "^2.1.1",
