@@ -26,6 +26,10 @@ export const Container = styled(Flex)`
   display: flex;
   align-items: center;
   min-width: 178px;
+  @media (max-width: 690px) {
+    width: 200px;
+    justify-content: space-around;
+  }
 `;
 
 export const Rectangle2Copy7 = styled.img`

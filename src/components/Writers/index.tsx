@@ -69,6 +69,9 @@ export const Wrapper = styled(Flex)`
   pointer-events: none;
   max-width: 320px;
   width: 100%;
+  @media (max-width: 690px) {
+    max-width: 600px;
+  }
 `;
 
 export const Container = styled(Flex)`
@@ -79,6 +82,10 @@ export const Container = styled(Flex)`
   min-height: 577px;
   padding: 40px 0;
   width: 301px;
+  @media (max-width: 690px) {
+    max-width: 600px;
+    width: 100vw;
+  }
 `;
 
 export const PoppinsMediumEbonyClay15px = css`

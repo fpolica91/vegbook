@@ -1,4 +1,5 @@
 import { Menu } from "../../components/navbar";
+import { useMediaQuery, Flex } from "@chakra-ui/react";
 import Writers from "../../components/Writers";
 import {
   Author,
@@ -11,6 +12,8 @@ import {
   Text2,
 } from "./styles";
 export default function Community() {
+  const [isLargerThanHD] = useMediaQuery(["(min-width: 690px)"]);
+  console.log(isLargerThanHD);
   return (
     <Container boxShadow="2xl">
       <Menu />
@@ -29,8 +32,13 @@ export default function Community() {
             eiusmod tempor incididunt ut labore et dolore magna
           </Text2>
         </HeroBody>
-        <Writers />
+        {isLargerThanHD && <Writers />}
       </Content>
+      {!isLargerThanHD && (
+        <Flex justify="center">
+          <Writers />
+        </Flex>
+      )}
     </Container>
   );
 }

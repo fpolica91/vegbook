@@ -25,6 +25,8 @@ export const HeroBody = styled(Box)`
   background-image: url("/img/containerImage.jpg");
   background-position: center;
   background-size: 100% 100%;
+  @media only screen and (max-width: 680px) {
+  }
 `;
 
 export const Title = styled.h1`
