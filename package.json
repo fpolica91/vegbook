@@ -12,7 +12,7 @@
     "@chakra-ui/react": "^1.6.6",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11",
-    "@netlify/plugin-nextjs": "^3.9.0",
+ 
     "@prismicio/client": "^5.1.0",
     "@sentry/nextjs": "^6.13.2",
     "@types/webpack": "^5.28.0",
@@ -22,9 +22,7 @@
     "prismic-dom": "^2.2.6",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "styled-components": "^5.3.1",
-    "uglify-js": "^3.14.2",
-    "webpack": "^5.54.0"
+    "styled-components": "^5.3.1"
   },
   "devDependencies": {
     "@types/prismic-dom": "^2.1.1",
