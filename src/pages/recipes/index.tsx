@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Wrapper } from "../../common/Container";
 import { Menu } from "../../components/navbar";
 import styles from "./recipes.module.scss";
 import { Flex, Stack, Box, Image, Text, Divider } from "@chakra-ui/react";
@@ -62,36 +63,38 @@ export default function Recipes({ recipes, next_page }: HomeProps) {
   return (
     <>
       <Head>Vegbook | Home</Head>
-      <Menu />
-      <Divider orientation="horizontal" />
-      <Flex flexDir="column" alignItems="center" margin="2rem 0">
-        <Stack>
-          {featuredRecipes.map((recipe) => (
-            <Box d="flex" boxShadow="md" width="3xl" maxW="1200px">
-              <Box>
-                <Image
-                  src={recipe.image.url}
-                  alt={recipe.image.alt}
-                  maxW="360px"
-                />
-              </Box>
-              <Box d="flex" flexDir="column" ml={10}>
-                <Box d="flex" flexDir="column" maxW="250px">
-                  <strong className={styles.heading}>{recipe.title}</strong>
-                  <span className={styles.time}>14 minutes easy</span>
+      <Wrapper>
+        <Menu />
+        <Divider orientation="horizontal" />
+        <Flex flexDir="column" alignItems="center" margin="2rem 0">
+          <Stack>
+            {featuredRecipes.map((recipe) => (
+              <Box d="flex" boxShadow="md" width="3xl" maxW="1200px">
+                <Box>
+                  <Image
+                    src={recipe.image.url}
+                    alt={recipe.image.alt}
+                    maxW="360px"
+                  />
+                </Box>
+                <Box d="flex" flexDir="column" ml={10}>
+                  <Box d="flex" flexDir="column" maxW="250px">
+                    <strong className={styles.heading}>{recipe.title}</strong>
+                    <span className={styles.time}>14 minutes easy</span>
+                  </Box>
                 </Box>
               </Box>
+            ))}
+          </Stack>
+          {nextPage && (
+            <Box as="div" my={8}>
+              <Text color="pink.400" as="button" onClick={loadMore}>
+                load more
+              </Text>
             </Box>
-          ))}
-        </Stack>
-        {nextPage && (
-          <Box as="div" my={8}>
-            <Text color="pink.400" as="button" onClick={loadMore}>
-              load more
-            </Text>
-          </Box>
-        )}
-      </Flex>
+          )}
+        </Flex>
+      </Wrapper>
     </>
   );
 }

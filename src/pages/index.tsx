@@ -1,17 +1,11 @@
 import Head from "next/head";
+import { Wrapper } from "../common/Container";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import Prismic from "@prismicio/client";
 import { RichText } from "prismic-dom";
 import { Menu } from "../components/navbar";
-import {
-  Flex,
-  Stack,
-  Divider,
-  Heading,
-  Box,
-  SimpleGrid,
-} from "@chakra-ui/react";
+import { Flex, Divider, Heading, Box, SimpleGrid } from "@chakra-ui/react";
 import { Preview } from "../components/Preview";
 import { Hero } from "../components/Hero";
 import { getPrismicClient } from "../services/prismic";
@@ -39,11 +33,11 @@ export default function Home({ previews }: HomeProps) {
       <Head>
         <title>VegBook | Home</title>
       </Head>
-      <Menu />
-      <Hero />
-      <Divider orientation="horizontal" />
 
-      <Flex as="article" justifyContent="center" flexDir="column" mt={12}>
+      <Wrapper>
+        <Menu />
+        <Hero />
+        <Divider orientation="horizontal" />
         <Box display="flex" mb={8} mt={10} justifyContent="center">
           <Heading fontWeight="normal">Latest</Heading>
         </Box>
@@ -69,7 +63,7 @@ export default function Home({ previews }: HomeProps) {
               ))}
           </SimpleGrid>
         </Flex>
-      </Flex>
+      </Wrapper>
     </>
   );
 }

@@ -1,7 +1,10 @@
 import { GetServerSideProps } from "next";
+
 import Head from "next/head";
 import { RichText } from "prismic-dom";
 import { useState } from "react";
+import styled from "styled-components";
+
 import {
   Flex,
   Heading,
@@ -36,36 +39,32 @@ interface RecipeProps {
 
 export default function Recipe({ recipe }: RecipeProps) {
   const [singleRecipe, setRecipe] = useState<Recipe>(recipe);
-  console.log(singleRecipe);
+
   return (
     <>
       <Head>Vegbook | {singleRecipe.title}</Head>
-      <Menu />
-      <Divider orientation="horizontal" />
-      <Flex
-        justifyContent="center"
-        flexDir="column"
-        alignItems="center"
-        m="0 auto"
-        maxW="1500px"
-      >
-        <Heading textTransform="capitalize" fontSize="5xl" pt={5}>
-          {singleRecipe.title}
-        </Heading>
-        <Box mt={20}>
-          <Image src={singleRecipe.image?.url} borderRadius="12px" />
-        </Box>
-        <Container
-          centerContent
-          maxW="container.lg"
-          d="flex"
-          flexDir="row"
-          justifyContent="flex-start"
-        >
-          <Box padding={4} lineHeight="1.8" textAlign="left" maxW="4xl">
-            <Text>{singleRecipe.excerpt}</Text>
+      <Wrapper boxShadow="2xl">
+        <Menu />
+        <Divider orientation="horizontal" />
+        <Flex flexDir="column" align="center">
+          <Heading textTransform="capitalize" fontSize="5xl" pt={5}>
+            {singleRecipe.title}
+          </Heading>
+          <Box mt={20}>
+            <Image src={singleRecipe.image?.url} borderRadius="12px" />
           </Box>
-        </Container>
+          <Container
+            centerContent
+            maxW="container.lg"
+            d="flex"
+            flexDir="row"
+            justifyContent="flex-start"
+          >
+            <Box padding={4} lineHeight="1.8" textAlign="left" maxW="4xl">
+              <Text>{singleRecipe.excerpt}</Text>
+            </Box>
+          </Container>
+        </Flex>
         <Divider orientation="horizontal" mt={2} />
         <Container maxW="container.lg" d="flex" justifyContent="center">
           <Heading fontSize="md">
@@ -88,7 +87,7 @@ export default function Recipe({ recipe }: RecipeProps) {
             }}
           />
         </Flex>
-      </Flex>
+      </Wrapper>
     </>
   );
 }
@@ -109,10 +108,17 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     cooking_instructions: RichText.asHtml(response.data.cooking_instructions),
     ingredients: RichText.asHtml(response.data.ingredients),
   };
-  console.log(recipe, "the response");
+
   return {
     props: {
       recipe,
     },
   };
 };
+
+export const Wrapper = styled(Flex)`
+  flex-direction: column;
+  max-width: 1400px;
+  margin: auto;
+  padding-bottom: 4rem;
+`;

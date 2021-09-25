@@ -7,7 +7,6 @@ const ThemeContainer: React.FC = ({ children }) => (
   <ChakraProvider theme={theme}>
     <CSSReset />
     {children}
-    <CSSReset />
   </ChakraProvider>
 );
 
