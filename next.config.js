@@ -6,6 +6,7 @@
 const { withSentryConfig } = require("@sentry/nextjs");
 
 const moduleExports = {
+  future: { webpack5: true },
   // Your existing module.exports
 };
 
