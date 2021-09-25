@@ -44,22 +44,22 @@ export function Menu() {
         className={styles.navbarComponent}
       >
         <Text>
-          <ActiveLink href="/recipes/" activeClassName={styles.active}>
+          <ActiveLink href="/recipes/">
             <a href="/recipes/">Browse</a>
           </ActiveLink>
         </Text>
         <Text>
-          <Link href="/trending/" activeClassName={styles.active}>
+          <Link href="/trending/">
             <a href="/trending/">Trending </a>
           </Link>
         </Text>
         <Text>
-          <Link href="/contribute/" activeClassName={styles.active}>
+          <Link href="/contribute/">
             <a href="/contribute/">Contribute </a>
           </Link>
         </Text>
         <Text>
-          <Link href="/community/" activeClassName={styles.active}>
+          <Link href="/community/">
             <a href="/community/">Community </a>
           </Link>
         </Text>

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 interface ActiveLinkProps extends LinkProps {
   children: ReactElement;
-  activeClassName: string;
+  activeClassName?: string;
 }
 
 export function ActiveLink({
