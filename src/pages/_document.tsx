@@ -5,6 +5,7 @@ import Document, {
   NextScript,
   DocumentContext,
 } from "next/document";
+
 import { ServerStyleSheet } from "styled-components";
 import { ColorModeScript } from "@chakra-ui/react";
 import theme from "../theme.config";
@@ -33,6 +34,7 @@ export default class MyDocument extends Document {
       sheet.seal();
     }
   }
+
   render() {
     return (
       <Html lang="en">
