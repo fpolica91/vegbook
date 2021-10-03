@@ -2,6 +2,7 @@ import { Menu } from "../../components/navbar";
 import { useMediaQuery, Flex, Box, Image } from "@chakra-ui/react";
 import Writers from "../../components/Writers";
 import styled from "styled-components";
+// this is a comment
 
 export default function Community() {
   const [isLargerThanHD] = useMediaQuery(["(min-width: 690px)"]);
