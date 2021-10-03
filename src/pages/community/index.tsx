@@ -3,6 +3,7 @@ import { useMediaQuery, Flex, Box, Image } from "@chakra-ui/react";
 import Writers from "../../components/Writers";
 import styled from "styled-components";
 
+// test number two go fuck yourself!@!!!!!!
 
 export default function Community() {
   const [isLargerThanHD] = useMediaQuery(["(min-width: 690px)"]);
