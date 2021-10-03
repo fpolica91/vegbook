@@ -8,14 +8,6 @@ export default function Community() {
   console.log(isLargerThanHD);
   return (
     <Container boxShadow="2xl">
-      <button
-        type="button"
-        onClick={() => {
-          throw new Error("Sentry Frontend Error");
-        }}
-      >
-        Throw error
-      </button>
       <Menu />
       <Content>
         <HeroBody>
