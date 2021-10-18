@@ -2,6 +2,8 @@ import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import LogRocket from "logrocket";
 import setupLogRocketReact from "logrocket-react";
+import { ApolloProvider } from "@apollo/client";
+import client from "../client/apolloClient";
 import ThemeContainer from "../contexts/theme/ThemeContainer";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -14,7 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeContainer>
-      <Component {...pageProps} />
+      <ApolloProvider client={client}>
+        <Component {...pageProps} />
+      </ApolloProvider>
     </ThemeContainer>
   );
 }
