@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Wrapper } from "../../common/Container";
+import { useAuth } from "../../hooks/auth";
 import { Menu } from "../../components/navbar";
 import {
   Flex,
@@ -8,70 +8,79 @@ import {
   Divider,
   FormControl,
   FormLabel,
-  FormHelperText,
   Button,
+  Box,
+  Heading,
+  Image,
 } from "@chakra-ui/react";
 import * as yup from "yup";
-import {
-  UserCreateInput,
-  useSignUpUserMutation,
-} from "../../generated/graphql";
+
 import { useForm, SubmitHandler } from "react-hook-form";
+import { signIn } from "next-auth/client";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-interface FormData extends UserCreateInput {
+interface FormData {
   email: string;
   password: string;
-  username: string;
-  name: string;
 }
 import Head from "next/head";
 const schema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().required().min(4),
-  username: yup.string().required(),
-  name: yup.string(),
 });
-
-// const { data, loading, error } = useQuery();
 
 export default function Register() {
   const { register, formState, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const [signupFucker] = useSignUpUserMutation();
+  const { signIn: sign } = useAuth();
 
-  const handleCreate: SubmitHandler<FormData> = async ({
+  const handleAuthenticate: SubmitHandler<FormData> = async ({
     email,
     password,
-    username,
-    name,
-  }: any) => {
-    signupFucker({
-      variables: {
-        signupData: {
-          email,
-          username,
-          password,
-          name,
-        },
-      },
-    });
+  }: FormData) => {
+    await sign({ email, password });
+  };
+
+  const handleSocialAuth = async () => {
+    await signIn();
   };
 
   return (
     <>
-      <Head>Vegbook | Register</Head>
+      <Head>Vegbook | Login</Head>
       <Wrapper>
         <Menu />
         <Divider orientation="horizontal" />
+        <Box py={5} mx="auto">
+          <Heading
+            color="brown.200"
+            fontSize="36px"
+            lineHeight="49px"
+            fontWeight="bold"
+            fontFamily="heading"
+            my={5}
+            as="h1"
+          >
+            Login to your Account
+          </Heading>
+
+          <Button
+            as="div"
+            variant="unstyled"
+            cursor="pointer"
+            onClick={handleSocialAuth}
+          >
+            <Image src="/img/google.png" alt="log in with google" />
+          </Button>
+        </Box>
         <Flex
           flexDir="column"
           alignItems="center"
           margin="2rem 0"
           as="form"
-          onSubmit={handleSubmit(handleCreate)}
+          onSubmit={handleSubmit(handleAuthenticate)}
         >
           <Stack spacing={5} dir="column" maxW={600} width="100%">
             <FormControl id="email">
@@ -81,26 +90,6 @@ export default function Register() {
                 {...register("email")}
                 error={formState.errors.email}
               />
-              <FormHelperText>We'll never share your email.</FormHelperText>
-            </FormControl>
-            <FormControl id="name">
-              <FormLabel>Enter Your Name</FormLabel>
-              <Input
-                type="name"
-                {...register("name")}
-                error={formState.errors.name}
-              />
-              <FormHelperText>Nice Meeting You!</FormHelperText>
-            </FormControl>
-
-            <FormControl id="username">
-              <FormLabel>Username</FormLabel>
-              <Input
-                type="username"
-                {...register("username")}
-                error={formState.errors.username}
-              />
-              <FormHelperText>Be Creative!</FormHelperText>
             </FormControl>
 
             <FormControl id="password">
@@ -110,7 +99,6 @@ export default function Register() {
                 {...register("password")}
                 error={formState.errors.password}
               />
-              <FormHelperText>Secure you must be!</FormHelperText>
             </FormControl>
           </Stack>
           <Button colorScheme="pink" type="submit">

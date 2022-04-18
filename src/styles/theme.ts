@@ -1,4 +1,4 @@
-import {theme} from "@chakra-ui/react"
+import { theme } from "@chakra-ui/react";
 
 const customTheme = {
   ...theme,
@@ -17,8 +17,8 @@ const customTheme = {
   },
   radii: {
     ...theme.radii,
-    sm: '5px',
-    md: '8px',
+    sm: "5px",
+    md: "8px",
   },
   fontSizes: {
     ...theme.fontSizes,
@@ -28,16 +28,19 @@ const customTheme = {
     ...theme.colors,
     purple: {
       ...theme.colors.purple,
-      500: '#8257e5',
+      500: "#8257e5",
+    },
+    brown: {
+      200: "#525252",
     },
     gray: {
       ...theme.colors.gray,
-      300: '#e1e1e6',
-      600: '#29292e',
-      700: '#202024',
-      800: '#121214'
+      300: "#e1e1e6",
+      600: "#29292e",
+      700: "#202024",
+      800: "#121214",
     },
-  }, 
-}
+  },
+};
 
 export default customTheme;

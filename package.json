@@ -23,6 +23,7 @@
     "logrocket": "^2.0.0",
     "logrocket-react": "^4.0.1",
     "next": "11.1.0",
+    "next-auth": "^3.29.0",
     "prismic-cli": "^4.1.1",
     "prismic-dom": "^2.2.6",
     "react": "17.0.2",

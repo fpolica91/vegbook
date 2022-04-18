@@ -1,0 +1,13 @@
+mutation LoginUser(
+  $password: String!
+  $email: String!
+  $where: UserWhereUniqueInput!
+) {
+  loginFucker(password: $password, email: $email, where: $where) {
+    email
+    token
+    id
+    username
+    name
+  }
+}

@@ -1,0 +1,7 @@
+mutation SignUpUser($signupData: UserCreateInput!) {
+  signupFucker(signupData: $signupData) {
+    email
+    username
+    id
+  }
+}

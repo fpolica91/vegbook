@@ -69,7 +69,13 @@ export default function Recipes({ recipes, next_page }: HomeProps) {
         <Flex flexDir="column" alignItems="center" margin="2rem 0">
           <Stack>
             {featuredRecipes.map((recipe) => (
-              <Box d="flex" boxShadow="md" width="3xl" maxW="1200px">
+              <Box
+                d="flex"
+                boxShadow="md"
+                width="3xl"
+                maxW="1200px"
+                key={recipe.slug}
+              >
                 <Box>
                   <Image
                     src={recipe.image.url}

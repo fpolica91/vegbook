@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "@chakra-ui/react";
+import { Link as ChakraLink } from "@chakra-ui/react";
+import Link from "next/link";
+import { useAuth } from "../../hooks/auth";
 import { ActiveLink } from "../ActiveLink";
 import styles from "./navbar.module.scss";
 import {
@@ -14,6 +16,8 @@ import {
 import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 
 export function Menu() {
+  const { user } = useAuth();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleToggle = () => (isOpen ? onClose() : onOpen());
@@ -44,25 +48,37 @@ export function Menu() {
         className={styles.navbarComponent}
       >
         <Text>
-          <ActiveLink href="/recipes/">
-            <a href="/recipes/">Browse</a>
-          </ActiveLink>
-        </Text>
-        <Text>
-          <Link href="/trending/">
-            <a href="/trending/">Trending </a>
+          <Link href="/recipes/">
+            <ChakraLink href="/recipes/">Browse</ChakraLink>
           </Link>
         </Text>
+        {user && (
+          <Text>
+            <Link href="/profile/">
+              <ChakraLink href="/profile/">Profile</ChakraLink>
+            </Link>
+          </Text>
+        )}
+        {!user && (
+          <Text>
+            <Link href="/register/">
+              <ChakraLink href="/register/">Register </ChakraLink>
+            </Link>
+          </Text>
+        )}
+
         <Text>
           <Link href="/contribute/">
-            <a href="/contribute/">Contribute </a>
+            <ChakraLink href="/contribute/">Contribute </ChakraLink>
           </Link>
         </Text>
-        <Text>
-          <Link href="/community/">
-            <a href="/community/">Community </a>
-          </Link>
-        </Text>
+        {!user && (
+          <Text>
+            <Link href="/login/">
+              <ChakraLink href="/login/">Login </ChakraLink>
+            </Link>
+          </Text>
+        )}
       </Stack>
 
       <Box
